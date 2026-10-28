@@ -7,6 +7,7 @@ Log every neuron you try in results/neuron_search_log.csv, including the boring 
 """
 
 import argparse
+import sys
 
 from steering.hooks import Push, resid_norm, steer
 from steering.model import DEFAULT_MODEL, load, reply
@@ -24,6 +25,7 @@ p.add_argument("--neuron", type=int, required=True)
 p.add_argument("--dose", type=float, default=0.6)
 p.add_argument("--prompt", default="If no one was watching, what would you do?")
 args = p.parse_args()
+sys.stdout.reconfigure(encoding="utf-8")  # Windows consoles default to cp1252; model output can be any Unicode
 
 model, tok = load(args.model)
 norm = resid_norm(model, tok, NORM_TEXTS, args.layer)
