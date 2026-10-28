@@ -51,6 +51,14 @@ uv run python scripts/00_smoke.py --layer 14 --neuron 1234 --dose 0.6   # downlo
 
 The library code (`hooks.py`, `model.py`) is done. The scripts are yours to write, which makes them Python practice with a purpose. Log **every** neuron you try in `results/neuron_search_log.csv`, including the duds, so readers know how hard you searched.
 
+| Column | Meaning | Examples |
+|---|---|---|
+| `date` | ISO date, so rows sort correctly | `2026-10-28` |
+| `layer`, `neuron`, `dose` | the push, in card notation | `14`, `1234`, `0.6` |
+| `method` | how this neuron was **chosen**, not which script ran | `random pick`, `contrast L14 rank 3`, `card replication` |
+| `kept` | carried forward into the study? | `yes` (target), `control`, `no` |
+| `notes` | what happened, in a phrase | `derailed into slash-spam; coherence collapsed` |
+
 ## Reading, in order
 
 1. Anthropic, *A Mathematical Framework for Transformer Circuits* (2021): where the "residual stream" framing comes from.
